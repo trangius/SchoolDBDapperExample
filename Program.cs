@@ -19,11 +19,11 @@ class Programmmmmmmm
     {
         DatabaseRepository repo = new DatabaseRepository();
 
-        List<(string Name, double AverageGrade)> avgGrades = repo.GetAverageGradeForAllCourses();
-        foreach(var avgGrade in avgGrades)
-        {
-            Console.WriteLine($"Kurs: {avgGrade.Name}, Medelbetyg: {avgGrade.AverageGrade}");
-        }
+        // List<(string Name, double AverageGrade)> avgGrades = repo.GetAverageGradeForAllCourses();
+        // foreach(var avgGrade in avgGrades)
+        // {
+        //     Console.WriteLine($"Kurs: {avgGrade.Name}, Medelbetyg: {avgGrade.AverageGrade}");
+        // }
         // List<Student> students = repo.GetAllStudents();
         // foreach (Student student in students)
         // {
@@ -35,15 +35,15 @@ class Programmmmmmmm
         // Student aStudent = repo.GetStudentById(id);
         // Console.WriteLine($"Namn: {aStudent.Name}, E-post: {aStudent.Email}, Födelsedatum: {aStudent.DateOfBirth}");
         
-        // Console.Write("Ange namn: ");
-        // string name = Console.ReadLine();
+        Console.Write("Ange namn: ");
+        string name = Console.ReadLine();
         
-        // Console.Write("Ange Email: ");
-        // string email = Console.ReadLine();
+        Console.Write("Ange Email: ");
+        string email = Console.ReadLine();
         
-        // Console.Write("Ange Födelsedatum: ");
-        // string date = Console.ReadLine();
-        // repo.AddStudent(name, email, date);
+        Console.Write("Ange Födelsedatum: ");
+        string date = Console.ReadLine();
+        repo.AddStudent(name, email, date);
 
     }
 }

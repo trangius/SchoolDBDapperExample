@@ -26,10 +26,11 @@ class DatabaseRepository
 
     public void AddStudent(string name, string email, string date)
     {
-        string sql = $"INSERT INTO Students (Name, Email, DateOfBirth) VALUES('{name}', '{email}', '{date}')";
+        string sql = "INSERT INTO Students (Name, Email, DateOfBirth) VALUES(@Name, @Email, @Date)";
+        var parameters = new { Name = name, Email = email, Date = date };
         //Console.WriteLine(sql);
         using IDbConnection conn = Connect();
-        conn.Execute(sql);
+        conn.Execute(sql, parameters);
     }
 
     public List<(string Name, double AverageGrade)> GetAverageGradeForAllCourses()
