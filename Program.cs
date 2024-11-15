@@ -1,6 +1,7 @@
 ﻿// använd viktiga bibliotek för att Databasanslutning och Dapper ska funka
 class Student
 {
+    public int Id { get; set; }
     public string Name { get; set; }
     public string Email { get; set; }
     public DateTime DateOfBirth { get; set; }
@@ -8,6 +9,7 @@ class Student
 
 class Course
 {
+    public int Id{get;set;}
     public string Name {get;set;}
     public int Credits{get;set;}
     public string Teacher {get;set;}
@@ -43,7 +45,27 @@ class Programmmmmmmm
         
         Console.Write("Ange Födelsedatum: ");
         string date = Console.ReadLine();
-        repo.AddStudent(name, email, date);
+
+        // registrera student till en kurs:
+        
+        // skriv först ut alla kurser:
+        List<Course> courses = repo.GetAllCourses();
+        foreach (Course course in courses)
+        {
+            Console.WriteLine($"Id:{course.Id} Kurs: {course.Name}, Lärare: {course.Teacher}, Poäng: {course.Credits}");
+        }
+        Console.Write("Vilken kurs vill du registrera studenten till? (Ange ID): ");
+        int courseId = int.Parse(Console.ReadLine());
+
+        try
+        {
+            repo.AddStudent(name, email, date, courseId);
+            Console.WriteLine("Student tillagd!");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Fel: " + ex.Message);
+        } 
 
     }
 }
